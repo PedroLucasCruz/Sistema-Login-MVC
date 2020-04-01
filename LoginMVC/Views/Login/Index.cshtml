@@ -1,0 +1,88 @@
+﻿
+@model  LoginMVC.Models.Login
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+ 
+    <link href="~/Styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Styles/style.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:black; ">
+
+    <div id="page" class="page">
+
+        <div class="main-form bg bg1" style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(../../Images/img2.jpg);">
+            <h1 class="editContent">A P O L L O  11</h1>
+            <div class="w3l-login-form editContent medium-editor-element" style="color: rgb(238, 238, 238); font-size: 16px; background-color: rgba(0, 0, 0, 0.41); font-family: Raleway, sans-serif; outline: none; outline-offset: -2px; cursor: inherit;" contenteditable="true" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="35" medium-editor-index="6de76f99-f8c6-a55b-da4d-a38045af9434" data-placeholder="Type your text" data-medium-focused="true">
+
+                <h3>Login</h3>
+
+                @*Dentro do parametro do beginForm você configura a chamada da action e controlle*@
+                @*Se for visto pelo inspecionar do navegador sera exibido como <form action="/Login/autorizar">*@
+
+                @using (Html.BeginForm("Autorizar", "Login", FormMethod.Post))
+                {
+                    <label class="has-error">
+                        @Html.DisplayFor(Model => Model.ErroNoLogin)
+                    </label>
+
+                    <div class=" w3l-form-group editContent" disabled="disabled">
+                        <label class="editContent" disabled="disabled">
+                            Username:
+                            @Html.ValidationMessageFor(model => model.Usuario)
+                        </label>
+
+                        <div class="group editContent">
+                            @Html.TextBoxFor(x => x.Usuario, new { @class = "form-control", @placeholder = "Digite seu nome de usuario", @requried = "required" , @border = "10px 20px 30px" })
+
+                            @*<input type="text" class="form-control" placeholder="Digite seu Usuario" required="required">*@
+                        </div>
+                    </div>
+
+                    <div class=" w3l-form-group editContent" disabled="disabled">
+                        <label class="editContent" disabled="disabled">
+                            Password:
+                            @Html.ValidationMessageFor(Model => Model.Senha)
+                        </label>
+                        <div class="group editContent">
+                            @*<input type="password" class="form-control" placeholder="Digite sua senha" required="required">*@
+                            @Html.TextBoxFor(x => x.Senha, new { @class = "form-control", @placeholder = "Digite sua senha", @requried = "required", @type = "Password" })
+
+                        </div>
+                    </div>
+
+                    <div class="forgot editContent" style="outline: none; cursor: inherit;">
+                        <a href="#" class="editContent" style="outline: none; cursor: inherit;">Forgot Password?</a>
+                        <p class="editContent" style="outline: none; cursor: inherit;"><input type="checkbox">Remember Me</p>
+                    </div>
+                    <button class="btn" type="submit" style="outline: none; cursor: inherit;">
+                        Login
+                    </button>
+
+                }
+
+
+
+
+                <p class="editContent w3l-register-p" style="outline: none; cursor: inherit;">
+                    Don't have an account?
+                    <a href="#" class="register editContant">
+                        Register
+                    </a>
+                </p>
+            </div>
+            <footer>
+                <p class="copyright-agileinfo"> © 2018 Material Login Form. All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+            </footer>
+        </div>
+    </div><!-- /#page -->

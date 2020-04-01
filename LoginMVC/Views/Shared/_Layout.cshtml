@@ -28,8 +28,22 @@
                     <li>@Html.ActionLink("Início", "Index", "Home")</li>
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Fazer Login","Login", "Home")
-                </ul>
+                    <li>
+                        @Html.ActionLink("Fazer Login", "Login", "Home")
+
+                        @*@{
+                            if (Session["UserName"] != null)
+                            {
+                                if (Session["UserName"].ToString().Trim().Length != 0)
+                                {
+                                <li>@Session["UserName"].ToString() </li>
+                                }
+                            }
+                        }*@
+
+
+                        <a href="@Url.Action("LogOut","Login")"> Logout </a>
+                    </ul>
             </div>
         </div>
     </div>
